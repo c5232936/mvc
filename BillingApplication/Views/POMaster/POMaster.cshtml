@@ -1,0 +1,488 @@
+﻿@model IEnumerable<BillingApplication.DBContexts.ImSS_Master_PO>
+
+@{
+    ViewBag.Title = "POMaster";
+}
+
+    <!--header name -->
+    <section class="content-header">
+        <h1 style="position:fixed;">
+            Purchase Order
+            <small></small>
+        </h1>
+        <ol class="breadcrumb" style="position:static;">
+            <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+            <li class="active">Purchase Order</li>
+        </ol>
+
+    </section>
+
+    <br />
+    <br />
+    <!--Create button -->
+    <div style=" position: fixed; left: 240px;">
+        <button type="button" id="btnadd" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
+            ADD New
+        </button>
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+    <!--Popup used to insert a record-->
+    <div class="modal fade" id="modal-default">
+        <div class="modal-dialog" style="width:1000px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">ADD</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3">Client Name</label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" id="ClientName" ></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3">Project Name</label>
+                                <div class="col-sm-3">
+                                    <input class="form-control"  type="text" id="ProjectName" />
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3">PO Number</label>
+                                <div class="col-sm-3">
+                                    <input class="form-control"  type="text" id="PONumber" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3">Point Of Contact</label>
+                                <div class="col-sm-3">
+                                    <input class="form-control"  type="text" id="PointOfContact" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3">Mode Of Payment</label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" id="ModeOfPayment" ></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3">Currency</label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" id="Currency" ></select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3">Start Date</label>
+                                <div class="col-sm-3">
+                                    <input class="form-control"  type="date" id="StartDate">
+                                    
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3">End Date</label>
+                                <div class="col-sm-3">
+                                    <input class="form-control"  type="date" id="EndDate" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3">Initial Amount</label>
+                                <div class="col-sm-3">
+                                    <input class="form-control"  type="text" id="InitialAmount" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3">Duration</label>
+                                <div class="col-sm-3">
+                                    <input class="form-control"  type="text" id="Duration" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3">Status</label>
+                                <div class="col-sm-3">
+                                    <input class="form-control"  type="text" id="Status" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3">Total Amount</label>
+                                <div class="col-sm-3">
+                                    <input class="form-control" disabled  type="text" id="TotalAmount" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3">Close Date</label>
+                                <div class="col-sm-3">
+                                    <input class="form-control"  type="date" id="CloseDate" />
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" id="btnSave" class="btn btn-outline-success">Save</button>
+                    <button type="button" class="btn btn-default pull" data-dismiss="modal">Cancel</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        //insert
+        $("body").on("click", "#btnSave", function () {
+            var txtClientName = $("#ClientName");
+            var txtProjectName = $("#ProjectName");
+            var txtPONumber = $("#PONumber");
+            var txtPointOfContact = $("#PointOfContact");
+            var txtModeOfPayment = $("#ModeOfPayment");
+            var txtCurrency = $("#Currency");
+            var txtStartDate = $("#StartDate");
+            var txtEndDate = $("#EndDate");
+            var txtInitialAmount = $("#InitialAmount");
+            var txtDuration = $("#Duration");
+            //var txtRenewedAmount = $("#RenewedAmount");
+            //var txtRenewedDate = $("#RenewedDate");
+            //var txtParent = $("#Parent");
+            var txtStatus = $("#Status");
+            var txtTotalAmount = $("#TotalAmount");
+            var txtCloseDate = $("#CloseDate");
+            $.ajax({
+                type: "POST",
+                url: "/POMaster/InsertPO",
+                data: '{Client_Name:"' + txtClientName.val() +'",Project_Name:"' + txtProjectName.val() +
+                '",PO_Number:"' + txtPONumber.val() +
+                '",Point_Of_Contact:"' + txtPointOfContact.val() +
+                '",Mode_Of_Payment:"' + txtModeOfPayment.val() +
+                '",Currency:"' + txtCurrency.val() +
+                '",PO_StartDate:"' + txtStartDate.val() +
+                '",PO_EndDate:"' + txtEndDate.val() +
+                '",PO_Initial_Amount:"' + txtInitialAmount.val() +
+                '",PO_Duration:"' + txtDuration.val() +
+                //'",PO_Renewed_Amount:0 ,PO_Renewed_Date:null ,Parent_PO:0 "' +
+                '",PO_Status:"' + txtStatus.val() +
+                '",PO_Total_Amount_INR:"' + txtTotalAmount.val() +
+                '",PO_Close_Date:"' + txtCloseDate.val() + '"}',
+
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    window.location.reload();
+                }
+
+            });
+        });
+
+        //delete operation
+        $("body").on("click", "#demoGrid #Delete", function () {
+            if (confirm("Do you want to delete this row?")) {
+                var row = $(this).closest("tr");
+                var id = row.find("span").html();
+                $.ajax({
+                    type: "POST",
+                    url: "/POMaster/Delete",
+                    data: '{id: ' + id + '}',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+                            row.find("#Edit").hide();
+                            row.find("#Delete").hide();
+                            row.find("span").html('&nbsp;');
+                            window.location.reload();
+                        
+                    }
+                });
+            }
+        });
+
+        //Edit event handler.
+        $("body").on("click", "#demoGrid #Edit", function () {
+            var row = $(this).closest("tr");
+            $("td", row).each(function () {
+                if (($(this).find("input").length > 0) || ($(this).find("select").length > 0) || ($(this).find("p").length > 0)) {
+                    $(this).find("input").show();
+                    $(this).find("select").show();
+                    $(this).find("p").show();
+                    $(this).find("span").hide();
+                }
+            });
+            row.find("#Update").show();
+            row.find("#Cancel").show();
+            row.find("#Renew").hide();
+            $(this).hide();
+        });
+
+        //Update event handler.
+        $("body").on("click", "#demoGrid #Update", function () {
+            var row = $(this).closest('tr');
+            row.find('td').each(function () {
+                if ($(this).find('input')) {
+                    $(this).find('span').html($(this).find('input').val());
+                    $(this).find('input').hide();
+                }
+                if ($(this).find('select')) {
+                    $(this).find('span').html($(this).find('select').val());
+                    $(this).find('select').hide();
+                }
+                $(this).find('span').show();
+            });
+            row.find("#Edit").show();
+            row.find("#Renew").show();
+            row.find("#Cancel").hide();
+            $(this).hide();
+
+            var po = {};
+            po.ID = row.find(".ID").find("span").html();
+            po.Client_Name = row.find(".Client_Name").find("span").html();
+            po.Project_Name = row.find(".Project_Name").find("span").html();
+            po.PO_Number = row.find(".PO_Number").find("span").html();
+            po.Point_Of_Contact = row.find(".Point_Of_Contact").find("span").html();
+            po.Mode_Of_Payment = row.find(".Mode_Of_Payment").find("span").html();
+            po.Currency = row.find(".Currency").find("span").html();
+            po.PO_StartDate = row.find(".PO_StartDate").find("span").html();
+            po.PO_EndDate = row.find(".PO_EndDate").find("span").html();
+            po.PO_Initial_Amount = row.find(".PO_Initial_Amount").find("span").html();
+            po.PO_Duration = row.find(".PO_Duration").find("span").html();
+            po.PO_Renewed_Amount = row.find(".PO_Renewed_Amount").find("span").html();
+            po.PO_Renewed_Date = row.find(".PO_Renewed_Date").find("span").html();
+            po.Parent_PO = row.find(".Parent_PO").find("span").html();
+            po.PO_Status = row.find(".PO_Status").find("span").html();
+            po.PO_Total_Amount_INR = row.find(".PO_Total_Amount_INR").find("span").html();
+            po.PO_Close_Date = row.find(".PO_Close_Date").find("span").html();
+            $.ajax({
+                type: "POST",
+                url: "/POMaster/Edit",
+                data: '{po:' + JSON.stringify(po) + '}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    window.location.reload();
+                }
+            });
+        });
+
+
+        //dropdown menu for cilent
+        $(document).ready(function () {
+            $(window).load(function () {
+                $.ajax({
+                    url: "/POMaster/GetClientList",
+                    type: "Get",
+                    success: function (data) {
+
+                        for (var i = 0; i < data.length; i++) {
+                            var opt = new Option(data[i].Client_Name, data[i].Client_Name);
+                            $('#ClientName').append(opt);
+                        }
+                    }
+                });
+            });
+        });
+
+
+        //Cancel event handler.
+        $("body").on("click", "#tbl_POMaster #Cancel", function () {
+            var row = $(this).closest("tr");
+            $("td", row).each(function () {
+                if (($(this).find("input").length > 0) || ($(this).find("select").length > 0) || ($(this).find("p").length > 0)) {
+                    var span = $(this).find("span");
+                    var input = $(this).find("input");
+                    var select = $(this).find("select");
+                    var ddl = $(this).find("p");
+                    input.val(span.html());
+                    select.val(span.html());
+                    ddl.val(span.html());
+                    span.show();
+                    input.hide();
+                    ddl.hide();
+                    select.hide();
+                }
+            });
+            row.find("#Edit").show();
+            row.find("#Delete").show();
+            row.find("#Update").hide();
+            $(this).hide();
+        });
+
+        //dropdown menu for currency
+        $(document).ready(function () {
+            $(window).load(function () {
+                $.ajax({
+                    url: "/POMaster/GetCurrencyRate",
+                    type: "Get",
+                    success: function (data) {
+
+                        for (var i = 0; i < data.length; i++) {
+                            var opt = new Option(data[i].Currency, data[i].Currency);
+                            $('#Currency').append(opt);
+                        }
+
+
+                    }
+
+                });
+
+            });
+        });
+
+        //dropdown menu for cilent
+        $(document).ready(function () {
+            $(window).load(function () {
+                $.ajax({
+                    url: "/POMaster/GetPaymentMode",
+                    type: "Get",
+                    success: function (data) {
+                        for (var i = 0; i < data.length; i++) {
+                            var opt = new Option(data[i].Payment, data[i].Payment);
+                            $('#ModeOfPayment').append(opt);
+                        }
+                    }
+
+                });
+
+            });
+        });
+
+        //searching box and paging
+        $(document).ready(function () {
+            $('#demoGrid').DataTable({
+                "scrollY": 300,
+                "scrollX": true,
+                "lengthMenu": [[5, 10, 15, 20, 25, 30, 35, 40, 45, 50, - 1], [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, "All"]],
+                "pagingType": "full_numbers"
+            }
+            );
+        });
+        $('#demoGrid').dataTable({});
+    </script>
+
+    <div style=" width:100%;">
+        <div class="container">
+            <div style="width:100%; padding-right:15%;">
+                <table id="demoGrid" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%;" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th style="display:none;">ID</th>
+                            <th>Client Name</th>
+                            <th>Project Name</th>
+                            <th>PO Number</th>
+                            <th>Point Of Contact</th>
+                            <th>Mode Of Payment</th>
+                            <th>Currency</th>
+                            <th>StartDate</th>
+                            <th>EndDate</th>
+                            <th>Initial Amount</th>
+                            <th>Duration</th> 
+                            <th>PO Status</th>
+                            <th>Total Amount</th>
+                            <th>Close Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+            {
+                            <tr>
+                                <td>
+                                    <a id="Edit" class="glyphicon glyphicon-pencil" href="javascript:;"></a>
+                                    <a id="Renew" class="glyphicon glyphicon-refresh" href="javascript:;"></a>
+                                    <a id="Update" class="glyphicon glyphicon-ok" href="javascript:;" style="display:none"></a>
+                                    <a id="Cancel" class="glyphicon glyphicon-remove" href="javascript:;" style="display:none"></a>
+                                    @*<a id="Delete" class="glyphicon glyphicon-trash" href="javascript:;"></a>*@
+                                </td>
+                                <td style="display:none;" class="ID">
+                                    <span>@item.ID</span>
+                                </td>
+                                <td class="Client_Name">
+                                    <p style="display:none;"> @Html.DropDownList("clientList", ViewBag.clientList as SelectList)</p>
+                                    <span>@item.Client_Name</span>
+                                </td>
+                                <td class="Project_Name">
+                                    <span>@item.Project_Name</span>
+                                    <input type="text" value="@item.Project_Name" style="display:none" />
+                                </td>
+                                <td class="PO_Number">
+                                    <span>@item.PO_Number</span>
+                                    <input type="text" value="@item.PO_Number" style="display:none" />
+                                </td>
+                                <td class="Point_Of_Contact">
+                                    <span>@item.Point_Of_Contact</span>
+                                    <input type="text" value="@item.Point_Of_Contact" style="display:none" />
+                                </td>
+                                <td class="Mode_Of_Payment">
+                                    <span>@item.Mode_Of_Payment</span>
+                                    <p style="display:none;">
+                                        @Html.DropDownList("paymentList", ViewBag.paymentList as SelectList)
+                                    </p>
+                                </td>
+                                <td class="Currency">
+                                    <span>@item.Currency</span>
+                                    <p style="display:none;">
+                                        @Html.DropDownList("currencyList", ViewBag.currencyList as SelectList)
+                                    </p>
+                                </td>
+                                <td class="PO_StartDate">
+                                    <span>@Convert.ToString(string.Format("{0:dd-MMM-yyyy}", item.PO_StartDate))</span>
+                                    <input type="date" value="@item.PO_StartDate" style="display:none" />
+                                </td>
+                                <td class="PO_EndDate">
+                                    <span>@Convert.ToString(string.Format("{0:dd-MMM-yyyy}", item.PO_EndDate))</span>
+                                    <input type="date" value="@item.PO_EndDate" style="display:none" />
+                                </td>
+                                <td class="PO_Initial_Amount">
+                                    <span>@item.PO_Initial_Amount</span>
+                                    <input type="text" value="@item.PO_Initial_Amount" style="display:none" />
+                                </td>
+                                <td class="PO_Duration">
+                                    <span>@item.PO_Duration</span>
+                                    <input type="text" value="@item.PO_Duration" style="display:none" />
+                                </td>
+                                <td class="PO_Status">
+                                    <span>@item.PO_Status</span>
+                                    <input type="text" value="@item.PO_Status" style="display:none" />
+                                </td>
+                                <td class="PO_Total_Amount_INR">
+                                    <span>@item.PO_Total_Amount_INR</span>
+                                    <input type="text" value="@item.PO_Total_Amount_INR" style="display:none" />
+                                </td>
+                                <td class="Close_Date">
+                                    <span>@Convert.ToString(string.Format("{0:dd-MMM-yyyy}", item.PO_Close_Date))</span>
+                                    <input type="text" value="@item.PO_Close_Date" style="display:none" />
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+</div>

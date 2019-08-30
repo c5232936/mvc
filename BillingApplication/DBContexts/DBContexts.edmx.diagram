@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fe0888dd60e045f6a86c089152c70b1e" Name="Diagram1" ZoomLevel="97">
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Balance" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Business_Unit" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Category" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Client_List" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Currency_Rate" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Domain" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Expenses" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Invoice_Master" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Location" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Master_Emp_List_c10406" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Master_PO" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Order_Status" Width="1.5" PointX="8.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Reporting_Head" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Skills_Category" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Status" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_TargetedVsActual" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Year" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Currency" Width="1.5" PointX="9.75" PointY="13.75" />
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Cust_Emp_Details" Width="1.5" PointX="0.75" PointY="15.75" />
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_MasterManager" Width="1.5" PointX="2.75" PointY="15.75" />
+        <EntityTypeShape EntityType="Billing_StagingModel.sysdiagram" Width="1.5" PointX="15.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Cilent_Status" Width="1.5" PointX="5.375" PointY="13.75" />
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Payment_Mode" Width="1.5" PointX="15.375" PointY="7.75" />
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Shadow" Width="1.5" PointX="15.375" PointY="10.75" />
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Master_Emp_List" Width="1.5" PointX="12.375" PointY="13.75" />
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Emp_Details" Width="1.5" PointX="15.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Master_Client" Width="1.5" PointX="14.375" PointY="13.75" />
+        <EntityTypeShape EntityType="Billing_StagingModel.ImSS_Client_Details" Width="1.5" PointX="5.375" PointY="16.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

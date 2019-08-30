@@ -1,0 +1,618 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Billing_StagingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ImSS_Balance">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Business_Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Year" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Total_Expanses_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Total_Received_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Balance_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Profit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ImSS_Business_Unit">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Business_Unit" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ImSS_Category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Category" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ImSS_Client_List">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Client_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Client_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ImSS_Currency_Rate">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Currency_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Rate" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="ImSS_Domain">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Domain_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ImSS_Expenses">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Business_Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="YEAR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Apr_Expenses" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="May_Expenses" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Jun_Expenses" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Jul_Expenses" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Aug_Expenses" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Sep_Expenses" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Oct_Expenses" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Nov_Expenses" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Dec_Expenses" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Jan_Expenses" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Feb_Expenses" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Mar_Expenses" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="ImSS_Invoice_Master">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Emp_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PO_Number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Contribution_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Engagement_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="YEAR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Parent_Link_ID" Type="Int64" />
+    <Property Name="CarryForwardOrder" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Apr_Approved_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Apr_Invoiced_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="May_Approved_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="May_Invoiced_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Jun_Approved_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Jun_Invoiced_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Jul_Approved_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Jul_Invoiced_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Aug_Approved_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Aug_Invoiced_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Sep_Approved_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Sep_Invoiced_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Oct_Approved_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Oct_Invoiced_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Nov_Approved_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Nov_Invoiced_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Dec_Approved_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Dec_Invoiced_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Jan_Approved_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Jan_Invoiced_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Feb_Approved_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Feb_Invoiced_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Mar_Approved_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Mar_Invoiced_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Per_Day_Amount" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="ImSS_Location">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Location_area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ImSS_Master_Emp_List_c10406">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="issueId" Type="Int64" />
+    <Property Name="modified" Type="Int32" />
+    <Property Name="Emp_Number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Emp_Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="DOJ" Type="DateTime" Precision="0" />
+    <Property Name="Previous_Exp" Type="Double" />
+    <Property Name="ImSS_Exp" Type="Double" />
+    <Property Name="Total_Exp" Type="Double" />
+    <Property Name="Domain" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Domain_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Business_Unit" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Business_Unit_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Reporting" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Reporting_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Primary_Skills" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Secondary_Skills" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Category" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Category_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="STATUS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Status_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Mobile_Number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Replaced_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Relived_date" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="ImSS_Master_PO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Client_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Project_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PO_Number" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Point_Of_Contact" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Mode_Of_Payment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PO_StartDate" Type="DateTime" Precision="0" />
+    <Property Name="PO_EndDate" Type="DateTime" Precision="0" />
+    <Property Name="PO_Initial_Amount" Type="Double" />
+    <Property Name="PO_Duration" Type="Int32" />
+    <Property Name="PO_Renewed_Amount" Type="Double" />
+    <Property Name="PO_Renewed_Date" Type="DateTime" Precision="0" />
+    <Property Name="Parent_PO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PO_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PO_Total_Amount_INR" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="PO_Close_Date" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="ImSS_Order_Status">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Business_Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="YEAR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Old_Orders_Amount" Type="Double" />
+    <Property Name="Apr_Orders_Amount" Type="Double" />
+    <Property Name="May_Orders_Amount" Type="Double" />
+    <Property Name="Jun_Orders_Amount" Type="Double" />
+    <Property Name="Jul_Orders_Amount" Type="Double" />
+    <Property Name="Aug_Orders_Amount" Type="Double" />
+    <Property Name="Sep_Orders_Amount" Type="Double" />
+    <Property Name="Oct_Orders_Amount" Type="Double" />
+    <Property Name="Nov_Orders_Amount" Type="Double" />
+    <Property Name="Dec_Orders_Amount" Type="Double" />
+    <Property Name="Jan_Orders_Amount" Type="Double" />
+    <Property Name="Feb_Orders_Amount" Type="Double" />
+    <Property Name="Mar_Orders_Amount" Type="Double" />
+  </EntityType>
+  <EntityType Name="ImSS_Reporting_Head">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Reporting_Head" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ImSS_Skills_Category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Skills_Category" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ImSS_Status">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ImSS_Skills_Category" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ImSS_TargetedVsActual">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Business_Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Quarter1_TB" Type="Double" />
+    <Property Name="Quarter1_AA" Type="Double" />
+    <Property Name="Quarter2_TB" Type="Double" />
+    <Property Name="Quarter2_AA" Type="Double" />
+    <Property Name="Quarter3_TB" Type="Double" />
+    <Property Name="Quarter3_AA" Type="Double" />
+    <Property Name="Quarter4_TB" Type="Double" />
+    <Property Name="Quarter4_AA" Type="Double" />
+  </EntityType>
+  <EntityType Name="ImSS_Year">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Year" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="Billing_StagingEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ImSS_Balance" EntityType="Self.ImSS_Balance" />
+    <EntitySet Name="ImSS_Business_Unit" EntityType="Self.ImSS_Business_Unit" />
+    <EntitySet Name="ImSS_Category" EntityType="Self.ImSS_Category" />
+    <EntitySet Name="ImSS_Client_List" EntityType="Self.ImSS_Client_List" />
+    <EntitySet Name="ImSS_Currency_Rate" EntityType="Self.ImSS_Currency_Rate" />
+    <EntitySet Name="ImSS_Domain" EntityType="Self.ImSS_Domain" />
+    <EntitySet Name="ImSS_Expenses" EntityType="Self.ImSS_Expenses" />
+    <EntitySet Name="ImSS_Invoice_Master" EntityType="Self.ImSS_Invoice_Master" />
+    <EntitySet Name="ImSS_Location" EntityType="Self.ImSS_Location" />
+    <EntitySet Name="ImSS_Master_Emp_List_c10406" EntityType="Self.ImSS_Master_Emp_List_c10406" />
+    <EntitySet Name="ImSS_Master_PO" EntityType="Self.ImSS_Master_PO" />
+    <EntitySet Name="ImSS_Order_Status" EntityType="Self.ImSS_Order_Status" />
+    <EntitySet Name="ImSS_Reporting_Head" EntityType="Self.ImSS_Reporting_Head" />
+    <EntitySet Name="ImSS_Skills_Category" EntityType="Self.ImSS_Skills_Category" />
+    <EntitySet Name="ImSS_Status" EntityType="Self.ImSS_Status" />
+    <EntitySet Name="ImSS_TargetedVsActual" EntityType="Self.ImSS_TargetedVsActual" />
+    <EntitySet Name="ImSS_Year" EntityType="Self.ImSS_Year" />
+    <EntitySet Name="ImSS_Currency" EntityType="Billing_StagingModel.ImSS_Currency" />
+    <EntitySet Name="ImSS_Cust_Emp_Details" EntityType="Billing_StagingModel.ImSS_Cust_Emp_Details" />
+    <EntitySet Name="ImSS_MasterManager" EntityType="Billing_StagingModel.ImSS_MasterManager" />
+    <EntitySet Name="sysdiagrams" EntityType="Billing_StagingModel.sysdiagram" />
+    <EntitySet Name="ImSS_Cilent_Status" EntityType="Billing_StagingModel.ImSS_Cilent_Status" />
+    <EntitySet Name="ImSS_Payment_Mode" EntityType="Billing_StagingModel.ImSS_Payment_Mode" />
+    <EntitySet Name="ImSS_Shadow" EntityType="Billing_StagingModel.ImSS_Shadow" />
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Billing_StagingModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Billing_StagingModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="spMaster_Emp_c10406_Update_Experiance" />
+    <FunctionImport Name="Calculation" ReturnType="Collection(Billing_StagingModel.Calculation_Result)" />
+    <FunctionImport Name="USP_Emp_Details" />
+    <EntitySet Name="ImSS_Master_Emp_List" EntityType="Billing_StagingModel.ImSS_Master_Emp_List" />
+    <EntitySet Name="ImSS_Emp_Details" EntityType="Billing_StagingModel.ImSS_Emp_Details" />
+    <EntitySet Name="ImSS_Master_Client" EntityType="Billing_StagingModel.ImSS_Master_Client" />
+    <EntitySet Name="ImSS_Client_Details" EntityType="Billing_StagingModel.ImSS_Client_Details" />
+  </EntityContainer>
+  <EntityType Name="ImSS_Currency">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ImSS_Cust_Emp_Details">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cilent_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Emp_Number" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <Property Name="Cilent_Start_Date" Type="DateTime" Precision="0" />
+    <Property Name="Cilent_End_Date" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="ImSS_MasterManager">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Manager" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ImSS_Cilent_Status">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cilent_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ImSS_Payment_Mode">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Payment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ImSS_Shadow">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Shadow" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="USP_Emp_Details_Result">
+    <Property Type="Int64" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Emp_Number" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Emp_Name" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="DOJ" Nullable="true" />
+    <Property Type="Double" Name="Previous_Exp" Nullable="true" />
+    <Property Type="Double" Name="ImSS_Exp" Nullable="true" />
+    <Property Type="Double" Name="Total_Exp" Nullable="true" />
+    <Property Type="String" Name="Domain" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Business_Unit" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Reporting" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Primary_Skills" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Secondary_Skills" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Category" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Mobile_Number" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Replaced_by" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Relived_Date" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="USP_Emp_Details1_Result">
+    <Property Type="String" Name="Emp_Number" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Emp_Name" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="DOJ" Nullable="true" />
+    <Property Type="Double" Name="Previous_Exp" Nullable="true" />
+    <Property Type="Double" Name="ImSS_Exp" Nullable="true" />
+    <Property Type="Double" Name="Total_Exp" Nullable="true" />
+    <Property Type="String" Name="Domain" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Business_Unit" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Reporting" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="Start_Date" Nullable="true" />
+    <Property Type="String" Name="Primary_Skills" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Secondary_Skills" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Category" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Mobile_Number" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Replaced_by" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Relived_Date" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="USP_Emp_Details_Result1">
+    <Property Type="Int64" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Emp_Number" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Emp_Name" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="DOJ" Nullable="true" />
+    <Property Type="Double" Name="Previous_Exp" Nullable="true" />
+    <Property Type="Double" Name="ImSS_Exp" Nullable="true" />
+    <Property Type="Double" Name="Total_Exp" Nullable="true" />
+    <Property Type="String" Name="Domain" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Business_Unit" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Reporting" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="Start_Date" Nullable="true" />
+    <Property Type="String" Name="Primary_Skills" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Secondary_Skills" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Category" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Mobile_Number" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Replaced_by" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Relived_Date" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="USP_Emp_Details_Result2">
+    <Property Type="Int64" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Emp_Number" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Emp_Name" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="DOJ" Nullable="true" />
+    <Property Type="Double" Name="Previous_Exp" Nullable="true" />
+    <Property Type="Double" Name="ImSS_Exp" Nullable="true" />
+    <Property Type="Double" Name="Total_Exp" Nullable="true" />
+    <Property Type="String" Name="Domain" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Business_Unit" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Reporting" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="Start_Date" Nullable="true" />
+    <Property Type="String" Name="Primary_Skills" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Secondary_Skills" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Category" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Mobile_Number" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Replaced_by" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Relived_Date" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="USP_Emp_Details_Result3">
+    <Property Type="Int64" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Emp_Number" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Emp_Name" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="DOJ" Nullable="true" />
+    <Property Type="Double" Name="Previous_Exp" Nullable="true" />
+    <Property Type="Double" Name="ImSS_Exp" Nullable="true" />
+    <Property Type="Double" Name="Total_Exp" Nullable="true" />
+    <Property Type="String" Name="Domain" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Business_Unit" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Reporting" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="Start_Date" Nullable="true" />
+    <Property Type="String" Name="Primary_Skills" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Secondary_Skills" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Category" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Mobile_Number" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Replaced_by" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Relived_Date" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="USP_Emp_Details_Result4">
+    <Property Type="Int64" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Emp_Number" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Emp_Name" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="DOJ" Nullable="true" />
+    <Property Type="Double" Name="Previous_Exp" Nullable="true" />
+    <Property Type="Double" Name="ImSS_Exp" Nullable="true" />
+    <Property Type="Double" Name="Total_Exp" Nullable="true" />
+    <Property Type="String" Name="Domain" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Business_Unit" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Reporting" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="Start_Date" Nullable="true" />
+    <Property Type="String" Name="Primary_Skills" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Secondary_Skills" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Category" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Mobile_Number" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Replaced_by" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Column1" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="Calculation_Result">
+    <Property Type="Int64" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Emp_Number" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Emp_Name" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="DOJ" Nullable="true" />
+    <Property Type="Double" Name="Previous_Exp" Nullable="true" />
+    <Property Type="Double" Name="ImSS_Exp" Nullable="true" />
+    <Property Type="Double" Name="Total_Exp" Nullable="true" />
+    <Property Type="String" Name="Business_Unit" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Reporting" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Primary_Skills" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Secondary_Skills" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Category" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Mobile_Number" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Replaced_by" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Relived_Date" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="USP_Emp_Details_Result5">
+    <Property Type="Int64" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Emp_Number" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Emp_Name" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="DOJ" Nullable="true" />
+    <Property Type="Double" Name="Previous_Exp" Nullable="true" />
+    <Property Type="Double" Name="ImSS_Exp" Nullable="true" />
+    <Property Type="Double" Name="Total_Exp" Nullable="true" />
+    <Property Type="String" Name="Domain" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Business_Unit" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Reporting" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="Start_Date" Nullable="true" />
+    <Property Type="String" Name="Primary_Skills" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Secondary_Skills" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Category" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Mobile_Number" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Replaced_by" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Relived_Date" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="USP_Emp_Details_Result6">
+    <Property Type="Int64" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Emp_Number" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Emp_Name" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="DOJ" Nullable="true" />
+    <Property Type="Double" Name="Previous_Exp" Nullable="true" />
+    <Property Type="Double" Name="ImSS_Exp" Nullable="true" />
+    <Property Type="Double" Name="Total_Exp" Nullable="true" />
+    <Property Type="String" Name="Domain" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Business_Unit" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Reporting" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="Start_Date" Nullable="true" />
+    <Property Type="String" Name="Primary_Skills" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Secondary_Skills" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Category" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Mobile_Number" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Replaced_by" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Relived_Date" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="USP_Emp_Details_Result7">
+    <Property Type="Int64" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Emp_Number" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Emp_Name" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="DOJ" Nullable="true" />
+    <Property Type="Double" Name="Previous_Exp" Nullable="true" />
+    <Property Type="Double" Name="ImSS_Exp" Nullable="true" />
+    <Property Type="Double" Name="Total_Exp" Nullable="true" />
+    <Property Type="String" Name="Domain" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Business_Unit" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Reporting" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="Start_Date" Nullable="true" />
+    <Property Type="String" Name="Primary_Skills" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Secondary_Skills" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Category" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Mobile_Number" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="Replaced_by" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="Relived_Date" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="ImSS_Master_Emp_List">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Emp_Number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Emp_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="DOJ" Type="DateTime" Precision="0" />
+    <Property Name="Previous_Exp" Type="Double" />
+    <Property Name="ImSS_Exp" Type="Double" />
+    <Property Name="Total_Exp" Type="Double" />
+    <Property Name="Domain" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Business_Unit" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Reporting" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Primary_Skills" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Secondary_Skills" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Category" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Mobile_Number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Replaced_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Relived_Date" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="ImSS_Emp_Details">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Employee_ID" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <Property Name="Manager_ID" Type="String" MaxLength="225" FixedLength="false" Unicode="false" />
+    <Property Name="Start_Date" Type="DateTime" Precision="0" />
+    <Property Name="End_Date" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="ImSS_Master_Client">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Emp_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Client_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Reporting_Manager_at_client_place" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Shadow" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ImSS_Client_Details">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Emp_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Client_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Reporting_Manager_at_client_place" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Cilent_Start_Date" Type="DateTime" Precision="0" />
+    <Property Name="Shadow" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

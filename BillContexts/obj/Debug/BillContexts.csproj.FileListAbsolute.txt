@@ -1,0 +1,14 @@
+E:\work\BillingApplication\BillContexts\bin\Debug\BillContexts.dll.config
+E:\work\BillingApplication\BillContexts\bin\Debug\BillContexts.dll
+E:\work\BillingApplication\BillContexts\bin\Debug\BillContexts.pdb
+E:\work\BillingApplication\BillContexts\bin\Debug\EntityFramework.dll
+E:\work\BillingApplication\BillContexts\bin\Debug\EntityFramework.SqlServer.dll
+E:\work\BillingApplication\BillContexts\bin\Debug\EntityFramework.xml
+E:\work\BillingApplication\BillContexts\bin\Debug\EntityFramework.SqlServer.xml
+E:\work\BillingApplication\BillContexts\obj\Debug\BillContexts.csproj.CoreCompileInputs.cache
+E:\work\BillingApplication\BillContexts\obj\Debug\BillContexts.dll
+E:\work\BillingApplication\BillContexts\obj\Debug\BillContexts.pdb
+E:\work\BillingApplication\BillContexts\bin\Debug\EntityFramework.SqlServerCompact.dll
+E:\work\BillingApplication\BillContexts\bin\Debug\System.Data.SqlServerCe.dll
+E:\work\BillingApplication\BillContexts\bin\Debug\EntityFramework.SqlServerCompact.xml
+E:\work\BillingApplication\BillContexts\obj\Debug\BillContexts.csprojResolveAssemblyReference.cache

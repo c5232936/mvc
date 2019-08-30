@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Billing_StagingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ImSS_Balance">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Business_Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Year" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Total_Expanses_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Total_Received_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Balance_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Profit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ImSS_Business_Unit">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Business_Unit" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ImSS_Category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Category" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ImSS_Client_List">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Client_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Client_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ImSS_Currency_Rate">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Currency_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Rate" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="ImSS_Domain">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Domain_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ImSS_Expenses">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Business_Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="YEAR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Apr_Expenses" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="May_Expenses" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Jun_Expenses" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Jul_Expenses" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Aug_Expenses" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Sep_Expenses" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Oct_Expenses" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Nov_Expenses" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Dec_Expenses" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Jan_Expenses" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Feb_Expenses" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Mar_Expenses" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="ImSS_Invoice_Master">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Emp_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PO_Number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Contribution_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Engagement_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="YEAR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Parent_Link_ID" Type="Int64" />
+    <Property Name="CarryForwardOrder" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Apr_Approved_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Apr_Invoiced_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="May_Approved_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="May_Invoiced_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Jun_Approved_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Jun_Invoiced_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Jul_Approved_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Jul_Invoiced_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Aug_Approved_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Aug_Invoiced_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Sep_Approved_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Sep_Invoiced_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Oct_Approved_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Oct_Invoiced_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Nov_Approved_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Nov_Invoiced_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Dec_Approved_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Dec_Invoiced_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Jan_Approved_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Jan_Invoiced_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Feb_Approved_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Feb_Invoiced_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Mar_Approved_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Mar_Invoiced_Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Per_Day_Amount" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="ImSS_Location">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Location_area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ImSS_Master_Client">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Emp_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Client_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Client_E_mail_Id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Reporting_Manager_at_client_place" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Shadow" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ImSS_Master_Emp_List">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Emp_Number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Emp_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="DOJ" Type="DateTime" Precision="0" />
+    <Property Name="Previous_Exp" Type="Double" />
+    <Property Name="ImSS_Exp" Type="Double" />
+    <Property Name="Total_Exp" Type="Double" />
+    <Property Name="Domain" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Business_Unit" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Reporting" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Primary_Skills" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Secondary_Skills" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Category" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Mobile_Number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Replaced_by" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Relived_Date" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="ImSS_Master_Emp_List_c10406">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="issueId" Type="Int64" />
+    <Property Name="modified" Type="Int32" />
+    <Property Name="Emp_Number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Emp_Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="DOJ" Type="DateTime" Precision="0" />
+    <Property Name="Previous_Exp" Type="Double" />
+    <Property Name="ImSS_Exp" Type="Double" />
+    <Property Name="Total_Exp" Type="Double" />
+    <Property Name="Domain" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Domain_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Business_Unit" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Business_Unit_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Reporting" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Reporting_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Primary_Skills" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Secondary_Skills" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Category" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Category_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="STATUS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Status_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Mobile_Number" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Replaced_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Relived_date" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="ImSS_Master_PO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Client_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Project_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PO_Number" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Point_Of_Contact" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Mode_Of_Payment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Currency" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PO_StartDate" Type="DateTime" Precision="0" />
+    <Property Name="PO_EndDate" Type="DateTime" Precision="0" />
+    <Property Name="PO_Initial_Amount" Type="Double" />
+    <Property Name="PO_Duration" Type="Int32" />
+    <Property Name="PO_Renewed_Amount" Type="Double" />
+    <Property Name="PO_Renewed_Date" Type="DateTime" Precision="0" />
+    <Property Name="Parent_PO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PO_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PO_Total_Amount_INR" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="PO_Close_Date" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="ImSS_Order_Status">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Business_Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="YEAR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Old_Orders_Amount" Type="Double" />
+    <Property Name="Apr_Orders_Amount" Type="Double" />
+    <Property Name="May_Orders_Amount" Type="Double" />
+    <Property Name="Jun_Orders_Amount" Type="Double" />
+    <Property Name="Jul_Orders_Amount" Type="Double" />
+    <Property Name="Aug_Orders_Amount" Type="Double" />
+    <Property Name="Sep_Orders_Amount" Type="Double" />
+    <Property Name="Oct_Orders_Amount" Type="Double" />
+    <Property Name="Nov_Orders_Amount" Type="Double" />
+    <Property Name="Dec_Orders_Amount" Type="Double" />
+    <Property Name="Jan_Orders_Amount" Type="Double" />
+    <Property Name="Feb_Orders_Amount" Type="Double" />
+    <Property Name="Mar_Orders_Amount" Type="Double" />
+  </EntityType>
+  <EntityType Name="ImSS_Reporting_Head">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Reporting_Head" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ImSS_Skills_Category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Skills_Category" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ImSS_Status">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ImSS_Skills_Category" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ImSS_TargetedVsActual">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Business_Unit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Quarter1_TB" Type="Double" />
+    <Property Name="Quarter1_AA" Type="Double" />
+    <Property Name="Quarter2_TB" Type="Double" />
+    <Property Name="Quarter2_AA" Type="Double" />
+    <Property Name="Quarter3_TB" Type="Double" />
+    <Property Name="Quarter3_AA" Type="Double" />
+    <Property Name="Quarter4_TB" Type="Double" />
+    <Property Name="Quarter4_AA" Type="Double" />
+  </EntityType>
+  <EntityType Name="ImSS_Year">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Year" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="Billing_StagingEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ImSS_Balance" EntityType="Self.ImSS_Balance" />
+    <EntitySet Name="ImSS_Business_Unit" EntityType="Self.ImSS_Business_Unit" />
+    <EntitySet Name="ImSS_Category" EntityType="Self.ImSS_Category" />
+    <EntitySet Name="ImSS_Client_List" EntityType="Self.ImSS_Client_List" />
+    <EntitySet Name="ImSS_Currency_Rate" EntityType="Self.ImSS_Currency_Rate" />
+    <EntitySet Name="ImSS_Domain" EntityType="Self.ImSS_Domain" />
+    <EntitySet Name="ImSS_Expenses" EntityType="Self.ImSS_Expenses" />
+    <EntitySet Name="ImSS_Invoice_Master" EntityType="Self.ImSS_Invoice_Master" />
+    <EntitySet Name="ImSS_Location" EntityType="Self.ImSS_Location" />
+    <EntitySet Name="ImSS_Master_Client" EntityType="Self.ImSS_Master_Client" />
+    <EntitySet Name="ImSS_Master_Emp_List" EntityType="Self.ImSS_Master_Emp_List" />
+    <EntitySet Name="ImSS_Master_Emp_List_c10406" EntityType="Self.ImSS_Master_Emp_List_c10406" />
+    <EntitySet Name="ImSS_Master_PO" EntityType="Self.ImSS_Master_PO" />
+    <EntitySet Name="ImSS_Order_Status" EntityType="Self.ImSS_Order_Status" />
+    <EntitySet Name="ImSS_Reporting_Head" EntityType="Self.ImSS_Reporting_Head" />
+    <EntitySet Name="ImSS_Skills_Category" EntityType="Self.ImSS_Skills_Category" />
+    <EntitySet Name="ImSS_Status" EntityType="Self.ImSS_Status" />
+    <EntitySet Name="ImSS_TargetedVsActual" EntityType="Self.ImSS_TargetedVsActual" />
+    <EntitySet Name="ImSS_Year" EntityType="Self.ImSS_Year" />
+  </EntityContainer>
+</Schema>

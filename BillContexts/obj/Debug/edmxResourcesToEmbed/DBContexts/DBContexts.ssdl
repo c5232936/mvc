@@ -1,0 +1,290 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Billing_StagingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ImSS_Balance">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Business_Unit" Type="varchar" MaxLength="50" />
+    <Property Name="Year" Type="varchar" MaxLength="25" />
+    <Property Name="Total_Expanses_Amount" Type="money" />
+    <Property Name="Total_Received_Amount" Type="money" />
+    <Property Name="Balance_Amount" Type="money" />
+    <Property Name="Profit" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ImSS_Business_Unit">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Business_Unit" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ImSS_Category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Category" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ImSS_Client_List">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Client_Name" Type="varchar" MaxLength="100" />
+    <Property Name="Client_Type" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ImSS_Currency_Rate">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Currency_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Rate" Type="money" />
+  </EntityType>
+  <EntityType Name="ImSS_Domain">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Domain_Name" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ImSS_Expenses">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Business_Unit" Type="varchar" MaxLength="50" />
+    <Property Name="YEAR" Type="varchar" MaxLength="50" />
+    <Property Name="Apr_Expenses" Type="money" />
+    <Property Name="May_Expenses" Type="money" />
+    <Property Name="Jun_Expenses" Type="money" />
+    <Property Name="Jul_Expenses" Type="money" />
+    <Property Name="Aug_Expenses" Type="money" />
+    <Property Name="Sep_Expenses" Type="money" />
+    <Property Name="Oct_Expenses" Type="money" />
+    <Property Name="Nov_Expenses" Type="money" />
+    <Property Name="Dec_Expenses" Type="money" />
+    <Property Name="Jan_Expenses" Type="money" />
+    <Property Name="Feb_Expenses" Type="money" />
+    <Property Name="Mar_Expenses" Type="money" />
+  </EntityType>
+  <EntityType Name="ImSS_Invoice_Master">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Emp_Number" Type="varchar" MaxLength="50" />
+    <Property Name="PO_Number" Type="varchar" MaxLength="255" />
+    <Property Name="Contribution_Amount" Type="money" />
+    <Property Name="Engagement_Type" Type="varchar" MaxLength="100" />
+    <Property Name="Status" Type="varchar" MaxLength="100" />
+    <Property Name="YEAR" Type="varchar" MaxLength="25" />
+    <Property Name="Parent_Link_ID" Type="bigint" />
+    <Property Name="CarryForwardOrder" Type="money" />
+    <Property Name="Apr_Approved_Amount" Type="money" />
+    <Property Name="Apr_Invoiced_Amount" Type="money" />
+    <Property Name="May_Approved_Amount" Type="money" />
+    <Property Name="May_Invoiced_Amount" Type="money" />
+    <Property Name="Jun_Approved_Amount" Type="money" />
+    <Property Name="Jun_Invoiced_Amount" Type="money" />
+    <Property Name="Jul_Approved_Amount" Type="money" />
+    <Property Name="Jul_Invoiced_Amount" Type="money" />
+    <Property Name="Aug_Approved_Amount" Type="money" />
+    <Property Name="Aug_Invoiced_Amount" Type="money" />
+    <Property Name="Sep_Approved_Amount" Type="money" />
+    <Property Name="Sep_Invoiced_Amount" Type="money" />
+    <Property Name="Oct_Approved_Amount" Type="money" />
+    <Property Name="Oct_Invoiced_Amount" Type="money" />
+    <Property Name="Nov_Approved_Amount" Type="money" />
+    <Property Name="Nov_Invoiced_Amount" Type="money" />
+    <Property Name="Dec_Approved_Amount" Type="money" />
+    <Property Name="Dec_Invoiced_Amount" Type="money" />
+    <Property Name="Jan_Approved_Amount" Type="money" />
+    <Property Name="Jan_Invoiced_Amount" Type="money" />
+    <Property Name="Feb_Approved_Amount" Type="money" />
+    <Property Name="Feb_Invoiced_Amount" Type="money" />
+    <Property Name="Mar_Approved_Amount" Type="money" />
+    <Property Name="Mar_Invoiced_Amount" Type="money" />
+    <Property Name="Per_Day_Amount" Type="money" />
+  </EntityType>
+  <EntityType Name="ImSS_Location">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Location" Type="varchar" MaxLength="50" />
+    <Property Name="Location_area" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ImSS_Master_Client">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Emp_Name" Type="varchar" MaxLength="255" />
+    <Property Name="Client_Name" Type="varchar" MaxLength="255" />
+    <Property Name="Client_E-mail_Id" Type="varchar" MaxLength="100" />
+    <Property Name="Reporting_Manager_at_client_place" Type="varchar" MaxLength="100" />
+    <Property Name="Shadow" Type="varchar" MaxLength="50" />
+    <Property Name="Location" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ImSS_Master_Emp_List">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Emp_Number" Type="varchar" MaxLength="255" />
+    <Property Name="Emp_Name" Type="varchar" MaxLength="255" />
+    <Property Name="DOJ" Type="date" />
+    <Property Name="Previous_Exp" Type="float" />
+    <Property Name="ImSS_Exp" Type="float" />
+    <Property Name="Total_Exp" Type="float" />
+    <Property Name="Domain" Type="varchar" MaxLength="255" />
+    <Property Name="Business_Unit" Type="varchar" MaxLength="255" />
+    <Property Name="Reporting" Type="varchar" MaxLength="255" />
+    <Property Name="Primary_Skills" Type="varchar" MaxLength="255" />
+    <Property Name="Secondary_Skills" Type="varchar" MaxLength="255" />
+    <Property Name="Category" Type="varchar" MaxLength="255" />
+    <Property Name="Status" Type="varchar" MaxLength="255" />
+    <Property Name="Mobile_Number" Type="varchar" MaxLength="255" />
+    <Property Name="Replaced_by" Type="varchar" MaxLength="50" />
+    <Property Name="Relived_Date" Type="date" />
+  </EntityType>
+  <EntityType Name="ImSS_Master_Emp_List_c10406">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="issueId" Type="bigint" />
+    <Property Name="modified" Type="int" />
+    <Property Name="Emp_Number" Type="varchar" MaxLength="255" />
+    <Property Name="Emp_Name" Type="nchar" MaxLength="10" />
+    <Property Name="DOJ" Type="date" />
+    <Property Name="Previous_Exp" Type="float" />
+    <Property Name="ImSS_Exp" Type="float" />
+    <Property Name="Total_Exp" Type="float" />
+    <Property Name="Domain" Type="varchar" MaxLength="255" />
+    <Property Name="Domain_name" Type="varchar" MaxLength="255" />
+    <Property Name="Business_Unit" Type="varchar" MaxLength="255" />
+    <Property Name="Business_Unit_name" Type="varchar" MaxLength="255" />
+    <Property Name="Reporting" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Reporting_name" Type="varchar" MaxLength="255" />
+    <Property Name="Primary_Skills" Type="varchar" MaxLength="255" />
+    <Property Name="Secondary_Skills" Type="varchar" MaxLength="255" />
+    <Property Name="Category" Type="varchar" MaxLength="255" />
+    <Property Name="Category_name" Type="varchar" MaxLength="255" />
+    <Property Name="STATUS" Type="varchar" MaxLength="255" />
+    <Property Name="Status_name" Type="varchar" MaxLength="255" />
+    <Property Name="Mobile_Number" Type="varchar" MaxLength="255" />
+    <Property Name="Replaced_by" Type="varchar" MaxLength="255" />
+    <Property Name="Relived_date" Type="date" />
+  </EntityType>
+  <EntityType Name="ImSS_Master_PO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Client_Name" Type="varchar" MaxLength="100" />
+    <Property Name="Project_Name" Type="varchar" MaxLength="100" />
+    <Property Name="PO_Number" Type="varchar" MaxLength="100" />
+    <Property Name="Point_Of_Contact" Type="varchar" MaxLength="100" />
+    <Property Name="Mode_Of_Payment" Type="varchar" MaxLength="50" />
+    <Property Name="Currency" Type="varchar" MaxLength="50" />
+    <Property Name="PO_StartDate" Type="date" />
+    <Property Name="PO_EndDate" Type="date" />
+    <Property Name="PO_Initial_Amount" Type="float" />
+    <Property Name="PO_Duration" Type="int" />
+    <Property Name="PO_Renewed_Amount" Type="float" />
+    <Property Name="PO_Renewed_Date" Type="date" />
+    <Property Name="Parent_PO" Type="varchar" MaxLength="100" />
+    <Property Name="PO_Status" Type="varchar" MaxLength="50" />
+    <Property Name="PO_Total_Amount_INR" Type="decimal" Precision="10" Scale="0" />
+    <Property Name="PO_Close_Date" Type="date" />
+  </EntityType>
+  <EntityType Name="ImSS_Order_Status">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Business_Unit" Type="varchar" MaxLength="50" />
+    <Property Name="YEAR" Type="varchar" MaxLength="50" />
+    <Property Name="Old_Orders_Amount" Type="float" />
+    <Property Name="Apr_Orders_Amount" Type="float" />
+    <Property Name="May_Orders_Amount" Type="float" />
+    <Property Name="Jun_Orders_Amount" Type="float" />
+    <Property Name="Jul_Orders_Amount" Type="float" />
+    <Property Name="Aug_Orders_Amount" Type="float" />
+    <Property Name="Sep_Orders_Amount" Type="float" />
+    <Property Name="Oct_Orders_Amount" Type="float" />
+    <Property Name="Nov_Orders_Amount" Type="float" />
+    <Property Name="Dec_Orders_Amount" Type="float" />
+    <Property Name="Jan_Orders_Amount" Type="float" />
+    <Property Name="Feb_Orders_Amount" Type="float" />
+    <Property Name="Mar_Orders_Amount" Type="float" />
+  </EntityType>
+  <EntityType Name="ImSS_Reporting_Head">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Reporting_Head" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ImSS_Skills_Category">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Skills_Category" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ImSS_Status">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImSS_Skills_Category" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ImSS_TargetedVsActual">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Business_Unit" Type="varchar" MaxLength="50" />
+    <Property Name="Quarter1_TB" Type="float" />
+    <Property Name="Quarter1_AA" Type="float" />
+    <Property Name="Quarter2_TB" Type="float" />
+    <Property Name="Quarter2_AA" Type="float" />
+    <Property Name="Quarter3_TB" Type="float" />
+    <Property Name="Quarter3_AA" Type="float" />
+    <Property Name="Quarter4_TB" Type="float" />
+    <Property Name="Quarter4_AA" Type="float" />
+  </EntityType>
+  <EntityType Name="ImSS_Year">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Year" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="Billing_StagingModelStoreContainer">
+    <EntitySet Name="ImSS_Balance" EntityType="Self.ImSS_Balance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImSS_Business_Unit" EntityType="Self.ImSS_Business_Unit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImSS_Category" EntityType="Self.ImSS_Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImSS_Client_List" EntityType="Self.ImSS_Client_List" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImSS_Currency_Rate" EntityType="Self.ImSS_Currency_Rate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImSS_Domain" EntityType="Self.ImSS_Domain" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImSS_Expenses" EntityType="Self.ImSS_Expenses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImSS_Invoice_Master" EntityType="Self.ImSS_Invoice_Master" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImSS_Location" EntityType="Self.ImSS_Location" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImSS_Master_Client" EntityType="Self.ImSS_Master_Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImSS_Master_Emp_List" EntityType="Self.ImSS_Master_Emp_List" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImSS_Master_Emp_List_c10406" EntityType="Self.ImSS_Master_Emp_List_c10406" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImSS_Master_PO" EntityType="Self.ImSS_Master_PO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImSS_Order_Status" EntityType="Self.ImSS_Order_Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImSS_Reporting_Head" EntityType="Self.ImSS_Reporting_Head" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImSS_Skills_Category" EntityType="Self.ImSS_Skills_Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImSS_Status" EntityType="Self.ImSS_Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImSS_TargetedVsActual" EntityType="Self.ImSS_TargetedVsActual" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImSS_Year" EntityType="Self.ImSS_Year" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

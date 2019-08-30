@@ -1,0 +1,512 @@
+﻿@model IEnumerable<BillingApplication.DBContexts.ImSS_Master_Client>
+
+@{
+    ViewBag.Title = "CustomerList";
+}
+
+<!--header name -->
+    <section class="content-header">
+        <h1 style="position:fixed;">
+            Customer
+            <small></small>
+        </h1>
+        <ol class="breadcrumb" style="position:static;">
+            <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+            <li class="active">Customer</li>
+        </ol>
+    </section>
+
+    <br />
+    <br />
+
+    <!--Create button -->
+    <div style=" position: fixed; left: 240px;">
+        <button type="button" id="btnadd" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
+            ADD New
+        </button>
+    </div>
+
+    <!--Popup used to insert a record-->
+    <div class="modal fade" id="modal-default">
+        <div class="modal-dialog" style="width:1000px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">ADD</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3">Employee Name</label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" id="EmployeeDropdown" ></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3">Client Name</label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" id="ClientDropdown" ></select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3">Client Email Id</label>
+                                <div class="col-sm-3">
+                                    <input class="form-control" type="text" id="Email" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3">Reporting Manager At Client Place</label>
+                                <div class="col-sm-3">
+                                    <input class="form-control"  type="text" id="ReportingManagerAtClientPlace" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3">Shadow</label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" id="ShadowDropdown" ></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3">Location</label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" id="LocationDropdown" ></select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3">Status</label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" id="StatusDropdown"></select>
+                                </div>
+                            </div>
+                            </div>
+                        
+                        
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSave" class="btn btn-outline-success">Save</button>
+                    <button type="button" class="btn btn-default pull" data-dismiss="modal">Cancel</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Ajax method used to insert data into database-->
+    <script>
+        $("body").on("click", "#btnSave", function () {
+            var txtId = $("#Id");
+            var txtEmployeeDropdown = $("#EmployeeDropdown");
+            var txtClientDropdown = $("#ClientDropdown");
+            var Email = $("#Email");
+            var txtReportingManagerAtClientPlace = $("#ReportingManagerAtClientPlace");
+
+            var txtShadowDropdown = $("#ShadowDropdown");
+            var txtLocationDropdown = $("#LocationDropdown");
+            var txtStatusDropdown = $("#StatusDropdown");
+            $.ajax({
+                type: "POST",
+                url: "/CustomerList/CreateCustomer",
+                data: '{ID:"' + txtId.val() + '",Emp_Name:"' + txtEmployeeDropdown.val() + '", Client_Name:"' + txtClientDropdown.val() + '",Email:"' + Email.val() + '",Reporting_Manager_at_client_place:"' + txtReportingManagerAtClientPlace.val() + '",Shadow:"' + txtShadowDropdown.val() + '",Location:"' + txtLocationDropdown.val() + '",Status:"' + txtStatusDropdown.val() + '"}',
+
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    window.location.reload();
+                }
+            });
+        });
+
+        //Edit event handler.
+        $("body").on("click", "#demoGrid1 #Edit", function () {
+            var row = $(this).closest("tr");
+            $("td", row).each(function () {
+                if (($(this).find("input").length > 0) || ($(this).find("select").length > 0) || ($(this).find("p").length > 0)) {
+                    $(this).find("input").show();
+                    $(this).find("select").show();
+                    $(this).find("p").show();
+                    $(this).find("span").hide();
+                }
+            });
+            row.find("#Update").show();
+            row.find("#Cancel").show();
+            row.find("#Delete").hide();
+            $(this).hide();
+        });
+
+        //Update event handler.
+        $("body").on("click", "#demoGrid1 #Update", function () {
+            var row = $(this).closest('tr');
+            row.find('td').each(function () {
+                if ($(this).find('input')) {
+                    $(this).find('span').html($(this).find('input').val());
+                    $(this).find('input').hide();
+                }
+                if ($(this).find('select')) {
+                    $(this).find('span').html($(this).find('select').val());
+                    $(this).find('select').hide();
+                }
+                $(this).find('span').show();
+            });
+            row.find("#Edit").show();
+            row.find("#Delete").show();
+            row.find("#Cancel").hide();
+            $(this).hide();
+
+            var cl = {};
+            cl.ID = row.find(".ID").find("span").html();
+            cl.Emp_Name = row.find(".Emp_Name").find("span").html();
+            cl.Client_Name = row.find(".Client_Name").find("span").html();
+            cl.Email = row.find(".Email").find("span").html();
+            cl.Reporting_Manager_at_client_place = row.find(".Reporting_Manager_at_client_place").find("span").html();
+            cl.Cilent_Start_Date = row.find(".Cilent_Start_Date").find("span").html();
+            cl.Shadow = row.find(".Shadow").find("span").html();
+            cl.Location = row.find(".Location").find("span").html();
+            cl.Status = row.find(".Status").find("span").html();
+
+            
+            $.ajax({
+                type: "POST",
+                url: "/CustomerList/EditList",
+                data: '{cl:' + JSON.stringify(cl) + '}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    
+                        window.location.reload();
+                                   }
+            });
+        });
+
+        ////delete operation
+        //$("body").on("click", "#demoGrid1 #Delete", function () {
+        //    if (confirm("Do you want to delete this row?")) {})
+        //        var row = $(this).closest("tr");
+        //        var id = row.find("span").html();
+        //        $.ajax({
+        //            type: "POST",
+        //            url: "/CustomerList/Delete",
+        //            data: '{id: ' + id + '}',
+        //            contentType: "application/json; charset=utf-8",
+        //            dataType: "json",
+        //            success: function (response) {
+        //                if ($("#demoGrid1 tr").length > 2) {
+        //                    row.remove();
+        //                } else {
+        //                    row.find("#Edit").hide();
+        //                    row.find("#Delete").hide();
+        //                    row.find("span").html('&nbsp;');
+        //                }
+        //            }
+        //        });
+        //    }
+        //});
+
+        //Cancel event handler.
+        $("body").on("click", "#demoGrid1 #Cancel", function () {
+            var row = $(this).closest("tr");
+            $("td", row).each(function () {
+                if (($(this).find("input").length > 0) || ($(this).find("select").length > 0) || ($(this).find("p").length > 0)) {
+                    var span = $(this).find("span");
+                    var input = $(this).find("input");
+                    var select = $(this).find("select");
+                    var ddl = $(this).find("p");
+                    input.val(span.html());
+                    select.val(span.html());
+                    ddl.val(span.html());
+                    span.show();
+                    input.hide();
+                    ddl.hide();
+                    select.hide();
+                }
+            });
+            row.find("#Edit").show();
+            row.find("#Delete").show();
+            row.find("#Update").hide();
+            $(this).hide();
+        });
+
+
+
+        //dropdown menu for employeename
+        $(document).ready(function () {
+            $(window).on("load", function () {
+                var EmployeeDropdown = $("#EmployeeDropdown");
+                EmployeeDropdown.empty().append('<option selected="selected" value="0" disabled = "disabled">Loading.....</option>');
+                $.ajax({
+                    url: "/CustomerList/GetEmployeeNameList",
+                    type: "Get",
+                    success: function (response) {
+                        EmployeeDropdown.empty().append('<option selected="selected" value="0">Please select</option>');
+                        $.each(response, function () {
+                            EmployeeDropdown.append($("<option></option>").val(this['Emp_Name']).html(this['Emp_Name']));
+                        });
+                    }
+
+                });
+
+            });
+        });
+
+
+        //dropdown menu for cilent
+        $(document).ready(function () {
+            $(window).on("load", function () {
+                var ClientDropdown = $("#ClientDropdown");
+                ClientDropdown.empty().append('<option selected="selected" value="0" disabled = "disabled">Loading.....</option>');
+                $.ajax({
+                    url: "/CustomerList/GetClientList",
+                    type: "Get",
+                    success: function (response) {
+                        ClientDropdown.empty().append('<option selected="selected" value="0">Please select</option>');
+                        $.each(response, function () {
+                            ClientDropdown.append($("<option></option>").val(this['Client_Name']).html(this['Client_Name']));
+                        });          
+                    }
+
+                });
+
+            });
+        });
+
+
+
+        //dropdown menu for Shadow
+        $(document).ready(function () {
+            $(window).on("load", function () {
+                var ShadowDropdown = $("#ShadowDropdown");
+                ShadowDropdown.empty().append('<option selected="selected" value="0" disabled = "disabled">Loading.....</option>');
+                $.ajax({
+                    url: "/CustomerList/GetShadowList",
+                    type: "Get",
+                    success: function (response) {
+                            ShadowDropdown.empty().append('<option selected="selected" value="0">Please select</option>');
+                        $.each(response, function () {
+                            ShadowDropdown.append($("<option></option>").val(this['Shadow']).html(this['Shadow']));
+                        });
+                    }
+
+                });
+
+            });
+        });
+
+        //dropdown menu for location
+        $(document).ready(function () {
+            $(window).on("load", function () {
+                var LocationDropdown = $("#LocationDropdown");
+                LocationDropdown.empty().append('<option selected="selected" value="0" disabled = "disabled">Loading.....</option>');
+                $.ajax({
+                    url: "/CustomerList/GetLocationList",
+                    type: "Get",
+                    success: function (response) {
+
+                        LocationDropdown.empty().append('<option selected="selected" value="0">Please select</option>');
+                        $.each(response, function () {
+                            LocationDropdown.append($("<option></option>").val(this['Location']).html(this['Location']));
+                        });
+                    }
+
+                });
+
+            });
+        });
+
+        //dropdown menu for status
+        $(document).ready(function () {
+           
+            $(window).on("load", function () {
+                var StatusDropdown = $("#StatusDropdown");
+                StatusDropdown.empty().append('<option selected="selected" value="0" disabled = "disabled">Loading.....</option>');
+                $.ajax({
+                    url: "/CustomerList/GetStatusList",
+                    type: "Get",
+                    success: function (response) {
+                        //confirm("Do you want to Update?");
+                        StatusDropdown.empty().append('<option selected="selected" value="0">Please select</option>');
+                        $.each(response, function () {
+                            StatusDropdown.append($("<option></option>").val(this['Cilent_Status']).html(this['Cilent_Status']));
+                        });
+                        }
+                    
+
+                });
+
+            });
+        
+        });
+
+
+        $(document).ready(function () {
+            $('#demoGrid1').DataTable({
+                "scrollY": 300,
+                "scrollX": true,
+                "lengthMenu": [[5, 10, 15, 20, 25, 30, 35, 40, 45, 50, - 1], [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, "All"]],
+                "pagingType": "full_numbers",    
+                "autoWidth":"fixed"
+            });
+        });
+        $('#demoGrid1').dataTable({});
+
+
+        //$(document).ready(function () {
+        //    $("#Edit").click(function () {
+        //        alert("Do you want to edit informations?");
+        //    });
+        //});
+
+        function functionedit() {
+            confirm("do you want to edit?");
+        };
+
+        //function functionupdate() {
+        //    var result = confirm("do you want to update?");
+        //    if (result)
+        //    {
+        //        $("body").on("click", "#demoGrid1 #Update", function () {
+        //            var row = $(this).closest('tr');
+        //            row.find('td').each(function () {
+        //                if ($(this).find('input')) {
+        //                    $(this).find('span').html($(this).find('input').val());
+        //                    $(this).find('input').hide();
+        //                }
+        //                if ($(this).find('select')) {
+        //                    $(this).find('span').html($(this).find('select').val());
+        //                    $(this).find('select').hide();
+        //                }
+        //                $(this).find('span').show();
+        //            });
+        //            row.find("#Edit").show();
+        //            row.find("#Delete").show();
+        //            row.find("#Cancel").hide();
+        //            $(this).hide();
+
+        //            var cl = {};
+        //            cl.ID = row.find(".ID").find("span").html();
+        //            cl.Emp_Name = row.find(".Emp_Name").find("span").html();
+        //            cl.Client_Name = row.find(".Client_Name").find("span").html();
+        //            cl.Client_E_mail_Id = row.find(".Client_E_mail_Id").find("span").html();
+        //            cl.Reporting_Manager_at_client_place = row.find(".Reporting_Manager_at_client_place").find("span").html();
+        //            cl.Shadow = row.find(".Shadow").find("span").html();
+        //            cl.Location = row.find(".Location").find("span").html();
+        //            cl.Status = row.find(".Status").find("span").html();
+        //            $.ajax({
+        //                type: "POST",
+        //                url: "/CustomerList/EditList",
+        //                data: '{cl:' + JSON.stringify(cl) + '}',
+        //                contentType: "application/json; charset=utf-8",
+        //                dataType: "json",
+        //                success: function (data) {
+
+        //                    window.location.reload();
+        //                }
+        //            });
+        //        });
+        //    }
+        //    else
+        //    {
+
+        //    }
+        //}
+        
+
+
+        //$(document).ready("#Edit").click(function () {
+        //    confirm("Do you want to Edit?");
+        //});
+
+        //$(document).ready("#Update").click(function () {
+        //    confirm("Do you want to Update?");
+        //});
+    </script>
+
+    <br />
+    <br />
+
+    <!--table view-->
+    <div class="container">
+        <br />
+        <div style="width:85%;   ">
+            <table id="demoGrid1" class="table table-striped table-bordered dt-responsive nowrap" style="width:90%; padding-right:5px;" cellspacing="0">
+                <thead>
+                    <tr style="width:100px;">
+                        <th>Action</th>
+                        <th style="display:none;"><center>ID</center></th>
+                        <th ><center>Employee Name</center></th>
+                        <th ><center>Client Name</center></th>
+                        <th ><center>Client Email Id</center></th>
+                        <th ><center>Reporting Manager At Client Place</center></th>
+                        <th ><center>Cilent Start Date</center></th>
+                        <th ><center>Shadow</center></th>
+                        <th ><center>Location</center></th>
+                        <th ><center>Status</center></th>
+                    </tr>
+                </thead>
+                <tbody id="searchingdata">
+                    @foreach (var item in ViewBag.Customerlist)
+                    {
+                        <tr style="width:100px;">
+                            <td>
+                                <a id="Edit" onclick="functionedit()" class="glyphicon glyphicon-pencil" href="javascript:;"></a>
+                                <a id="Update" onclick="functionupdate()" class="glyphicon glyphicon-ok" href="javascript:;" style="display:none"></a>
+                                <a id="Cancel" class="glyphicon glyphicon-remove" href="javascript:;" style="display:none"></a>
+                               </td>
+                            <td class="ID" style="display:none;">
+                                <span>@item.ID</span>
+                            </td>
+
+                            <td   class="Emp_Name">
+                                <span>@item.Emp_Name</span>
+                                @*<p  style="display:none;"> @Html.DropDownList("EmployeeDropdown", ViewBag.EmployeeNameList as SelectList)</p>*@
+                                <input disabled type="text" value="@item.Emp_Name" style="display:none; width:auto; " />
+                            </td>
+                            <td class="Client_Name">
+                                <span>@item.Client_Name</span>
+                                @*<p style="display:none;"> @Html.DropDownList("ClientDropdown", ViewBag.ClientList as SelectList)</p>*@
+                                <input disabled type="text" value="@item.Client_Name" style="display:none; width:auto;" />
+                            </td>
+                            <td class="Email">
+                                <span>@item.Email</span>
+                                <input type="text" value="@item.Email" style="display:none; width:auto;" />
+                            </td>
+                            <td class="Reporting_Manager_at_client_place">
+                                <span>@item.Reporting_Manager_at_client_place</span>
+                                <input type="text" value="@item.Reporting_Manager_at_client_place" style="display:none; width:auto;" />
+                            </td>
+                            <td class="Cilent_Start_Date">
+                                <span>@item.Cilent_Start_Date</span>
+                                <input disabled type="text" value="@item.Cilent_Start_Date" style="display:none; width:auto;" />
+                            </td>
+                            <td class="Shadow">
+                                <span>@item.Shadow</span>
+                                <p style="display:none; width:auto;"> @Html.DropDownList("ShadowDropdown", ViewBag.ShadowList as SelectList)</p>
+                           </td>
+                            <td class="Location">
+                                <span>@item.Location</span>
+                                <p style="display:none; width:auto;"> @Html.DropDownList("LocationDropdown", ViewBag.LocationList as SelectList)</p>
+                           </td>
+                            <td class="Status">
+                                <span>@item.Status</span>
+                                <p style="display:none; width:auto; "> @Html.DropDownList("StatusDropdown", ViewBag.StatusList as SelectList)</p>
+                              </td>
+                            
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+  

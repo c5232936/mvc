@@ -1,0 +1,651 @@
+﻿@model IEnumerable<BillingApplication.DBContexts.ImSS_Master_Emp_List>
+
+@{
+    ViewBag.Title = "EmployeeList";
+}
+
+
+
+
+
+    <!--header name -->
+    <section class="content-header">
+        <h1 style="position:fixed;">
+            Employee
+            <small></small>
+        </h1>
+        <ol class="breadcrumb" style="position:static;">
+                <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                <li class="active">Employee</li>
+            </ol>
+    </section>
+
+    <br />
+    <br />
+
+    <!--Create button -->
+    <div style=" position: fixed; left: 240px;">
+        <button type="button" id="btnadd" class="btn btn-default" data-toggle="modal" data-target="#modal-default">
+            ADD New
+        </button>
+    </div>
+
+    <!--Popup used to insert a record-->
+    <div class="modal fade" id="modal-default">
+        <div class="modal-dialog" style="width:1000px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">ADD</h4>
+                </div>
+                <div class="modal-body">
+                    <form >
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3">Employee Number  <span class="requiredfeild">&#42;</span></label>
+                                
+                                <div class="col-sm-3">
+                                    <input class="form-control"   type="text" id="EmployeeNumber"  required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3">Employee Name   <span class="requiredfeild">&#42;</span></label>
+                                <div class="col-sm-3">
+                                    <input class="form-control" type="text" id="EmployeeName"/>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3">Date Of Joining   <span class="requiredfeild">&#42;</span></label>
+                                <div class="col-sm-3">
+                                    <input class="form-control" placeholder="Date Of Joining" type="date" id="DateOfJoining" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3">Previous Experiences   <span class="requiredfeild">&#42;</span></label>
+                                <div class="col-sm-3">
+                                    <input class="form-control" type="text" id="PreviousExperiences" onkeyup="sum();"  required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3">IMSS Experiences  <span class="requiredfeild">&#42;</span></label>
+                                <div class="col-sm-3">
+                                    <input class="form-control "  type="text" id="IMSSExperiences" onkeyup="sum();" required>
+                                </div>
+                            </div>
+                            <div class="form-group" style="display:none">
+                                <label>Total Experiences</label>
+                                <div>
+                                    <input style="display:none;" disabled class="form-control" placeholder="Total Experiences" type="text" id="TotalExperiences" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3">Domain  <span class="requiredfeild">&#42;</span></label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" id="Domain" required></select>
+                                </div>
+                            </div>
+                            </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3">Bussiness Unit  <span class="requiredfeild">&#42;</span></label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" id="BussinessUnit" required ></select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3">Reporting Manager  <span class="requiredfeild">&#42;</span></label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" id="Reporting" required></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3">Primary Skills  <span class="requiredfeild">&#42;</span></label>
+                                <div class="col-sm-3">
+                                    <input class="form-control" type="text" id="PrimarySkills" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3">Secondary Skills</label>
+                                <div class="col-sm-3">
+                                    <input class="form-control" type="text" id="SecondarySkills" required>
+                                </div>
+                            </div>
+                            </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3">Category  <span class="requiredfeild">&#42;</span></label>
+                                <div class="col-sm-3">
+                                    <select class="form-control" id="CategoryDropdown" required></select>
+                                </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3">Status <span class="requiredfeild">&#42;</span></label>
+                                    <div class="col-sm-3">
+                                        <select class="form-control" id="Status" required></select>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3">Mobile Number <span class="requiredfeild">&#42;</span></label>
+                                <div class="col-sm-3">
+                                    <input class="form-control" type="text" id="MobileNumber" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3">Replaced by </label>
+                                <div class="col-sm-3">
+                                    <input class="form-control" type="text" id="Replacedby" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <label class="col-sm-3">Relived Date</label>
+                                <div class="col-sm-3">
+                                    <input class="form-control" type="date" id="RelivedDate" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnSave" class="btn btn-outline-success">Save</button>
+                    <button type="button" class="btn btn-default pull" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <!--Ajax method used to insert data into database-->
+    <script>
+                                        $("body").on("click", "#btnSave", function () {
+                                            var txtEmployeeNumber = $("#EmployeeNumber");
+                                            var txtEmployeeName = $("#EmployeeName");
+                                            var txtDateOfJoining = $("#DateOfJoining");
+                                            var txtPreviousExperiences = $("#PreviousExperiences");
+                                            var txtIMSSExperiences = $("#IMSSExperiences");
+                                            var txtTotalExperiences = $("#TotalExperiences");
+                                            var txtDomain = $("#Domain");
+                                            var txtBussinessUnit = $("#BussinessUnit");
+                                            var txtReporting = $("#Reporting");
+                                            var txtPrimarySkills = $("#PrimarySkills");
+                                            var txtSecondarySkills = $("#SecondarySkills");
+                                            var txtCategoryDropdown = $("#CategoryDropdown");
+                                            var txtStatus = $("#Status");
+                                            var txtMobileNumber = $("#MobileNumber");
+                                            var txtReplacedby = $("#Replacedby");
+                                            var txtRelivedDate = $("#RelivedDate");
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "/EmployeeList/CreateEmployee",
+                                                data: '{Emp_Number:"' + txtEmployeeNumber.val() +
+                                                '",Emp_Name:"' + txtEmployeeName.val() +
+                                                '",DOJ:"' + txtDateOfJoining.val() +
+                                                '",Previous_Exp:"' + txtPreviousExperiences.val() +
+                                                '",ImSS_Exp:"' + txtIMSSExperiences.val() +
+                                                '",Total_Exp:"' + txtTotalExperiences.val() +
+                                                '",Domain:"' + txtDomain.val() +
+                                                '",Bussiness_Unit:"' + txtBussinessUnit.val() +
+                                                '",Reporting:"' + txtReporting.val() +
+                                                '",Primary_Skills:"' + txtPrimarySkills.val() +
+                                                '",Secondary_Skills:"' + txtSecondarySkills.val() +
+                                                '",Category:"' + txtCategoryDropdown.val() +
+                                                '",Status:"' + txtStatus.val() +
+                                                '",Mobile_Number:"' + txtMobileNumber.val() +
+                                                '",Replaced_by:"' + txtReplacedby.val() +
+                                                '",Relived_Date:"' + txtRelivedDate.val() + '"}',
+
+                                                contentType: "application/json; charset=utf-8",
+                                                dataType: "json",
+                                                success: function (data) {
+                                                    window.location.reload();
+                                                }
+
+                                            });
+                                        });
+
+                                        //$("#btnSave").click(function () {
+                                        //    var Employee = new Array();
+                                        //    var Employee = {};
+                                        //    //Employee.EmployeeNumber = $("#EmployeeNumber").val();
+                                        //    //Employee.EmployeeName = $("#EmployeeName").val();
+                                        //    //Employee.DateOfJoining = $("#DateOfJoining").val();
+                                        //    //Employee.PreviousExperiences = $("#PreviousExperiences").val();
+                                        //    //Employee.IMSSExperiences = $("#IMSSExperiences").val();
+                                        //    //Employee.TotalExperiences = $("#TotalExperiences").val();
+                                        //    //Employee.Domain = $("#Domain").val();
+                                        //    //Employee.BussinessUnit = $("#BussinessUnit").val();
+                                        //    //Employee.Reporting = $("#Reporting").val();
+                                        //    //Employee.PrimarySkills = $("#PrimarySkills").val();
+                                        //    //Employee.SecondarySkills = $("#SecondarySkills").val();
+                                        //    //Employee.CategoryDropdown = $("#CategoryDropdown").val();
+                                        //    //Employee.Status = $("#Status").val();
+                                        //    Employee.MobileNumber = $("#MobileNumber").val();
+                                        //    //Employee.Replacedby = $("#Replacedby").val();
+                                        //    //Employee.RelivedDate = $("#RelivedDate").val();
+                                        //    var flag = false;
+                                        //    if (Employee.MobileNumber != "") {
+
+                                        //        var filter = /^\d*(?:\.\d{1,2})?$/;
+
+                                        //        if (filter.test(Employee.MobileNumber)) {
+                                        //            if (Employee.MobileNumber.length == 10) {
+                                        //                $("#MobileNumber").html("");
+                                        //            } else {
+                                        //                $("#MobileNumber").html("Please put 10 digit mobile number");
+                                        //                flag = true;
+
+                                        //            }
+                                        //        }
+                                        //        else {
+                                        //            $("#MobileNumber").html("Not a valid number");
+
+                                        //            flag = true;
+                                        //        }
+                                        //    }
+                                        //});
+    
+                                        
+
+
+
+                                        //Edit event handler.
+                                        $("body").on("click", "#demoGrid #Edit", function () {
+                                            var row = $(this).closest("tr");
+                                            $("td", row).each(function () {
+                                                if (($(this).find("input").length > 0) || ($(this).find("select").length > 0) || ($(this).find("p").length > 0)) {
+                                                    $(this).find("input").show();
+                                                    $(this).find("select").show();
+                                                    $(this).find("p").show();
+                                                    $(this).find("span").hide();
+                                                }
+                                            });
+                                            row.find("#Update").show();
+                                            row.find("#Cancel").show();
+                                            row.find("#Delete").hide();
+                                            $(this).hide();
+                                        });
+
+                                        //Update event handler.
+                                        $("body").on("click", "#demoGrid #Update", function () {
+                                            var row = $(this).closest('tr');
+                                            row.find('td').each(function () {
+                                                if ($(this).find('input')) {
+                                                    $(this).find('span').html($(this).find('input').val());
+                                                    $(this).find('input').hide();
+                                                }
+                                                if ($(this).find('select')) {
+                                                    $(this).find('span').html($(this).find('select').val());
+                                                    $(this).find('select').hide();
+                                                }
+                                                $(this).find('span').show();
+                                            });
+                                            row.find("#Edit").show();
+                                            row.find("#Delete").show();
+                                            row.find("#Cancel").hide();
+                                            $(this).hide();
+
+
+                                            var emp = {};
+                                            emp.ID = row.find(".ID").find("span").html();
+                                            emp.Emp_Number = row.find(".Emp_Number").find("span").html();
+                                            emp.Emp_Name = row.find(".Emp_Name").find("span").html();
+                                            emp.DOJ = row.find(".DOJ").find("span").html();
+                                            emp.Previous_Exp = row.find(".Previous_Exp").find("span").html();
+                                            emp.ImSS_Exp = row.find(".ImSS_Exp").find("span").html();
+                                            emp.Total_Exp = row.find(".Total_Exp").find("span").html();
+                                            emp.Domain = row.find(".Domain").find("span").html();
+                                            emp.Business_Unit = row.find(".Business_Unit").find("span").html();
+                                            emp.Reporting = row.find(".Reporting").find("span").html();
+                                            emp.Primary_Skills = row.find(".Primary_Skills").find("span").html();
+                                            emp.Secondary_Skills = row.find(".Secondary_Skills").find("span").html();
+                                            emp.Category = row.find(".Category").find("span").html();
+                                            emp.Status = row.find(".Status").find("span").html();
+                                            emp.Mobile_Number = row.find(".Mobile_Number").find("span").html();
+                                            emp.Replaced_by = row.find(".Replaced_by").find("span").html();
+                                            emp.Relived_Date = row.find(".Relived_Date").find("span").html();
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "/EmployeeList/Edit",
+                                                data: '{emp:' + JSON.stringify(emp) + '}',
+                                                contentType: "application/json; charset=utf-8",
+                                                dataType: "json",
+                                                success: function (data) {
+                                                    window.location.reload();
+                                                }
+                                            });
+                                        });
+
+                                        ////delete operation
+                                        //$("body").on("click", "#demoGrid #Delete", function () {
+                                        //    if (confirm("Do you want to delete this row?")) {
+                                        //        var row = $(this).closest("tr");
+                                                
+                                        //        var Emp_Number = row.find(".Emp_Number").find("span").html();
+                                        //        $.ajax({
+                                        //            type: "POST",
+                                        //            url: "/EmployeeList/Delete",
+                                        //            data: '{Emp_Number: ' + Emp_Number + '}',
+                                        //            contentType: "application/json; charset=utf-8",
+                                        //            dataType: "json",
+                                        //            success: function (response) {
+                                                        
+                                        //                    row.find("#Edit").hide();
+                                        //                    row.find("#Delete").hide();
+                                        //                    row.find("span").html('&nbsp;');
+                                                        
+                                        //                window.location.reload();
+                                        //            }
+                                        //        });
+                                        //    }
+                                        //});
+
+                                        //Cancel event handler.
+                                        $("body").on("click", "#demoGrid #Cancel", function () {
+                                            var row = $(this).closest("tr");
+                                            $("td", row).each(function () {
+                                                if (($(this).find("input").length > 0) || ($(this).find("select").length > 0) || ($(this).find("p").length > 0)) {
+                                                    var span = $(this).find("span");
+                                                    var input = $(this).find("input");
+                                                    var select = $(this).find("select");
+                                                    var ddl = $(this).find("p");
+                                                    input.val(span.html());
+                                                    select.val(span.html());
+                                                    ddl.val(span.html());
+                                                    span.show();
+                                                    input.hide();
+                                                    ddl.hide();
+                                                    select.hide();
+                                                }
+                                            });
+                                            row.find("#Edit").show();
+                                            row.find("#Delete").show();
+                                            row.find("#Update").hide();
+                                            $(this).hide();
+                                        });
+
+                                        function sum() {
+                                            var txtFirstNumberValue = document.getElementById('PreviousExperiences').value;
+                                            var txtSecondNumberValue = document.getElementById('IMSSExperiences').value;
+                                            var result = parseFloat(txtFirstNumberValue) + parseFloat(txtSecondNumberValue);
+                                            if (!isNaN(result)) {
+                                                document.getElementById('TotalExperiences').value = result;
+                                            }
+                                        }
+
+                                        
+                                        
+                                        //dropdown binding for reporting
+                                        $(document).ready(function () {
+                                                $(window).on("load", function () {
+                                                var Reporting = $("#Reporting");
+                                                Reporting.empty().append('<option selected="selected" value="0" disabled = "disabled">Loading.....</option>');
+                                                $.ajax({
+                                                    url: "/EmployeeList/GetReportingList",
+                                                    type: "Get",
+                                                    success: function (response) {
+
+                                                        Reporting.empty().append('<option selected="selected" value="0">Select</option>');
+                                                        $.each(response, function () {
+                                                            Reporting.append($("<option></option>").val(this['Reporting_Head']).html(this['Reporting_Head']));
+                                                        });
+                                                    }
+
+                                                });
+
+                                            });
+                                        });
+
+                                        //dropdown binding for bussinessunit
+                                        $(document).ready(function () {
+                                            $(window).on("load", function () {
+                                                var BussinessUnit = $("#BussinessUnit");
+                                                BussinessUnit.empty().append('<option selected="selected" value="0" disabled = "disabled">Loading.....</option>');
+                                                $.ajax({
+                                                    url: "/EmployeeList/GetBussinessUnitList",
+                                                    type: "Get",
+                                                    success: function (response) {
+
+                                                        BussinessUnit.empty().append('<option selected="selected" value="0">Select</option>');
+                                                        $.each(response, function () {
+                                                            BussinessUnit.append($("<option></option>").val(this['Business_Unit']).html(this['Business_Unit']));
+                                                        });
+                                                    }
+
+                                                });
+
+                                            });
+                                        });
+
+                                        //dropdown binding for domain
+                                        $(document).ready(function () {
+                                            $(window).on("load", function () {
+                                                var Domain = $("#Domain");
+                                                Domain.empty().append('<option selected="selected" value="0" disabled = "disabled">Loading.....</option>');
+                                                $.ajax({
+                                                    url: "/EmployeeList/GetDomainList",
+                                                    type: "Get",
+                                                    success: function (response) {
+
+                                                        Domain.empty().append('<option selected="selected" value="0">Select</option>');
+                                                        $.each(response, function () {
+                                                            Domain.append($("<option></option>").val(this['Domain_Name']).html(this['Domain_Name']));
+                                                        });
+                                                    }
+
+                                                });
+
+                                            });
+                                        });
+
+                                        //dropdown binding for status
+                                        $(document).ready(function () {
+                                            $(window).on("load", function () {
+                                                var Status = $("#Status");
+                                                Status.empty().append('<option selected="selected" value="0" disabled = "disabled">Loading.....</option>');
+                                                $.ajax({
+                                                    url: "/EmployeeList/GetStatusList",
+                                                    type: "Get",
+                                                    success: function (response) {
+                                                        Status.empty().append('<option selected="selected" value="0">Select</option>');
+                                                        $.each(response, function () {
+                                                            Status.append($("<option></option>").val(this['ImSS_Skills_Category']).html(this['ImSS_Skills_Category']));
+                                                        });
+                                                    }
+
+                                                });
+
+                                            });
+                                        });
+
+                                        //dropdown binding for category
+                                        $(document).ready(function () {
+                                            $(window).on("load", function () {
+                                                var CategoryDropdown = $("#CategoryDropdown");
+                                                CategoryDropdown.empty().append('<option selected="selected" value="0" disabled = "disabled">Loading.....</option>');
+                                                $.ajax({
+                                                    url: "/EmployeeList/GetcategoryList",
+                                                    type: "Get",
+                                                    success: function (response) {
+
+                                                        CategoryDropdown.empty().append('<option selected="selected" value="0">Select</option>');
+                                                        $.each(response, function () {
+                                                            CategoryDropdown.append($("<option></option>").val(this['Category']).html(this['Category']));
+                                                        });
+                                                    }
+
+                                                });
+
+                                            });
+                                        });
+
+
+                                        //searching box and paging
+                                        $(document).ready(function () {
+                                            $('#demoGrid').DataTable({
+                                                "scrollY": 300,
+                                                "scrollX": true,
+                                                "lengthMenu": [[5, 10, 15, 20, 25, 30, 35, 40, 45, 50, - 1], [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, "All"]],
+                                                "pagingType": "full_numbers"
+                                            });
+
+                                        });
+                                        $('#demoGrid').dataTable({});
+
+
+
+    </script>
+
+    <br />
+    <!--table view-->
+    <div style=" width:100%;">
+        <div class="container">
+            <br />
+            <div style="width:100%; padding-right:15%;">
+                <table id="demoGrid" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <!--Table headers-->
+                            <th></th>
+                            <th style="display:none;"><center>ID</center></th>
+                            <th><center>Employee Number</center></th>
+                            <th><center>Employee Name</center></th>
+                            <th><center>Date Of Joining</center></th>
+                            <th><center>Previous Experiences</center></th>
+                            <th><center>IMSS Experiences</center></th>
+                            <th><center>Total Experiences</center></th>
+                            <th><center>Domain</center></th>
+                            <th><center>Bussiness Unit</center></th>
+                            <th><center>Reporting Manager</center></th>
+                            <th><center>Reporting Start Date</center></th>
+                            <th><center>Primary Skills</center></th>
+                            <th><center>Secondary Skills</center></th>
+                            <th><center>Category</center></th>
+                            <th><center>Status</center></th>
+                            <th><center>Mobile Number</center></th>
+                            <th><center>Replaced by</center></th>
+                            <th><center>Relived Date</center></th>
+
+                        </tr>
+                    </thead>
+                    <!--Table date-->
+                    <tbody id="datasearching">
+                        @foreach (var item in ViewBag.employeelist)
+                        {
+                            <tr>
+                                <td>
+                                    <a id="Edit" class="glyphicon glyphicon-pencil" href="javascript:;"></a>
+                                    <a id="Update" class="glyphicon glyphicon-ok" href="javascript:;" style="display:none"></a>
+                                    <a id="Cancel" class="glyphicon glyphicon-remove" href="javascript:;" style="display:none"></a>
+                                    @*<a id="Delete" class="glyphicon glyphicon-trash" href="javascript:;"></a>*@
+                               </td>
+                                <td Style="display:none;"class="ID">
+                                    <span>@item.ID</span>
+                                </td>
+                                    <td class="Emp_Number">
+                                    <span>@item.Emp_Number</span>
+                                    <input type="text" value="@item.Emp_Number" style="display:none" />
+
+                                </td>
+                                <td class="Emp_Name">
+                                    <span>@item.Emp_Name</span>
+                                    <input type="text" value="@item.Emp_Name" style="display:none" />
+
+                                </td>
+
+                                <td class="DOJ">
+                                    <span>@item.DOJ</span>
+                                    <input type="date" value="@item.DOJ" style="display:none" />
+
+                                </td>
+                                <td class="Previous_Exp">
+                                    <span>@item.Previous_Exp</span>
+                                    <input type="text" value="@item.Previous_Exp" style="display:none" id="PreviousExperiences1"  />
+
+                                </td>
+                                <td class="ImSS_Exp">
+                                    <span>@item.ImSS_Exp</span>
+                                    <input type="text" value="@item.ImSS_Exp" style="display:none" id="IMSSExperiences1" />
+
+                                </td>
+                                <td class="Total_Exp">
+                                    <span>@item.Total_Exp</span>
+                                    <input disabled type="text" value="@item.Total_Exp" style="display:none" id="TotalExperiences1" />
+                                    
+                                </td>
+                                <td class="Domain">
+                                    <span>@item.Domain</span>
+                                    <p style="display:none;"> @Html.DropDownList("Domain", ViewBag.DomainList as SelectList)</p>
+
+                                </td>
+                                <td class="Business_Unit">
+                                    <span>@item.Business_Unit</span>
+                                    <p style="display:none;"> @Html.DropDownList("BussinessUnit", ViewBag.BussinessUnitList as SelectList)</p>
+
+                                </td>
+
+                                <td class="Reporting">
+                                    <span>@item.Reporting</span>
+                                    <p style="display:none;"> @Html.DropDownList("Reporting", ViewBag.ReportingList as SelectList)</p>
+                                </td>
+                                <td class="Start_Date">
+                                    <span>@item.Start_Date</span>
+                                    <input type="date" value="@item.Start_Date" style="display:none" />
+
+                                </td>
+                                <td class="Primary_Skills">
+                                    <span>@item.Primary_Skills</span>
+                                    <input type="text" value="@item.Primary_Skills" style="display:none" />
+
+                                </td>
+                                <td class="Secondary_Skills">
+                                    <span>@item.Secondary_Skills</span>
+                                    <input type="text" value="@item.Secondary_Skills" style="display:none" />
+
+                                </td>
+                                <td class="Category">
+                                    <span>@item.Category</span>
+                                    <p style="display:none;"> @Html.DropDownList("Category", ViewBag.categoryList as SelectList)</p>
+
+                                </td>
+                                <td class="Status">
+                                    <span>@item.Status</span>
+                                    <p style="display:none;"> @Html.DropDownList("Status", ViewBag.StatusList as SelectList)</p>
+
+                                </td>
+                                <td class="Mobile_Number">
+                                    <span>@item.Mobile_Number</span>
+                                    <input type="text" value="@item.Mobile_Number" style="display:none" />
+
+                                </td>
+                                <td class="Replaced_by">
+                                    <span>@item.Replaced_by</span>
+                                    <input type="text" value="@item.Replaced_by" style="display:none" />
+
+                                </td>
+                                <td class="Relived_Date">
+                                    <span>@item.Relived_Date</span>
+                                    <input type="date" value="@item.Relived_Date" style="display:none" />
+                                 </td>
+
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
